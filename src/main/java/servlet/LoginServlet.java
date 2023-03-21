@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/blog/Blog");
 			
 		} else {
-			request.setAttribute("errorlogin", "IDまたはパスワードが一致間違っています。");
+			request.setAttribute("errorlogin", "IDまたはパスワードが間違っています。");
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);

@@ -16,6 +16,7 @@
 	</c:when>
 	<c:otherwise>
 		<p>ようこそ<c:out value="${user.username}" />さん</p>
+		<a href="/blog/Blog?action=logout">ログアウト</a>
 	</c:otherwise>
 </c:choose>
 </body>

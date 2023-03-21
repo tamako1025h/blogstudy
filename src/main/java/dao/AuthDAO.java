@@ -14,6 +14,12 @@ public class AuthDAO {
 	private final static String DB_USER="root";
 	private final static String DB_PASS="";
 	
+	/**
+	 * ログインにつかうメソッド
+	 * param String username
+	 * param String password
+	 * return User
+	 */
 	public User Login(String username,String password) {
 		User user=null;
 		
@@ -36,13 +42,11 @@ public class AuthDAO {
 			// 一致する行があった場合、Userを返す
 			if (rs.next()) {
 				int id = rs.getInt("ID");
-				String userName = rs.getString("USER_NAME");
-				String passWord = rs.getString("PASSWORD");
 				String privilege = rs.getString("PRIVILEGE");
 				Date created_at = rs.getDate("CREATED_AT");
 				Date update_at = rs.getDate("UPDATE_AT");
 				
-				user = new User(id,userName,passWord,privilege,created_at,update_at);
+				user = new User(id,username,password,privilege,created_at,update_at);
 			}
 			
 		}catch (SQLException e) {
