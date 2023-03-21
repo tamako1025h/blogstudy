@@ -14,7 +14,21 @@ public class Blog extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/jsp/blog.jsp");
+		String action = request.getParameter("action");
+		String fowardPath = null;
+		
+		if (action == null) {
+			fowardPath = "/WEB-INF/jsp/blog.jsp";
+			
+		} else if (action.equals("login")) {
+			fowardPath = "/WEB-INF/jsp/login.jsp";
+			
+		} else if (action.equals("register")) {
+			fowardPath = "WEB-INF/jsp/register.jsp";
+			
+		}
+		
+		RequestDispatcher dispatcher =request.getRequestDispatcher(fowardPath);
         dispatcher.forward(request, response);
 	}
 
